@@ -1,11 +1,6 @@
 from fastapi import FastAPI
+from app.api.routes import router
 
-app = FastAPI()
+server = FastAPI()
 
-@app.get("/")
-def default_entry_point():
-  print("Server running")
-  return {
-    "success": True,
-    "message": "server is live"
-  }
+server.include_router(router)
