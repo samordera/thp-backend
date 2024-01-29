@@ -1,6 +1,13 @@
 from fastapi import FastAPI
-from app.api.routes import router
+from contextlib import asynccontextmanager
+from app.api.routers import api_router
 
-server = FastAPI()
+@asynccontextmanager
+async def server_init(server: FastAPI):
+  server.include_router(api_router)
+  yield
 
-server.include_router(router)
+server = FastAPI(
+  title="thp-backend",
+  lifespan=server_init
+)
