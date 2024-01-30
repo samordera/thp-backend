@@ -1,3 +1,5 @@
+from app.usecases.session import SessionUsecases
+
 class SessionController:
   def __init__():
     pass
@@ -6,6 +8,19 @@ class SessionController:
     return {
       "success": True,
       "message": "New session was created"
+    }
+  
+  async def active():
+    session_active = SessionUsecases.active()
+    return {
+      "success": True,
+      "session active": session_active,
+    }
+  
+  async def get_history():
+    return {
+      "success": True,
+      "session history": {}
     }
   
   async def update_history(id):

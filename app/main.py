@@ -4,10 +4,10 @@ from app.api.routers import api_router
 
 @asynccontextmanager
 async def server_init(server: FastAPI):
-  server.include_router(api_router)
+  server.include_router(api_router, prefix="/api")
   yield
 
 server = FastAPI(
-  title="thp-backend",
+  title="thp-backend-apiV1",
   lifespan=server_init
 )
