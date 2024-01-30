@@ -4,7 +4,7 @@ from app.api.routers import api_router
 
 @asynccontextmanager
 async def server_init(server: FastAPI):
-  server.include_router(api_router, prefix="/api")
+  server.include_router(api_router)
   yield
 
 server = FastAPI(

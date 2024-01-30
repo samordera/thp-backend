@@ -6,7 +6,7 @@ class UserController:
   
   async def get_users():
     try:
-      users = UserUsecases.get_users()
+      users = await UserUsecases.get_users()
       return {
         "success": True,
         "message": "Users retrieved",
