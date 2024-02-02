@@ -1,9 +1,9 @@
 from fastapi import APIRouter
 from app.controllers import MainController
 
-from app.api.routers.user import user_router
-from app.api.routers.session import session_router
-from app.api.routers.data_analysis.table import table_router
+from app.api.v1.routers.user import router as user_router
+from app.api.v1.routers.session import router as session_router
+from app.api.v1.routers.data_analysis.table import router as table_router
 
 api_router = APIRouter()
 api_router.include_router(user_router, prefix="/api/users")

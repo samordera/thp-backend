@@ -9,28 +9,28 @@ class UserData(BaseModel):
   pass
 ###
 
-user_router = APIRouter()
+router = APIRouter()
 
-@user_router.get("/")
+@router.get("/")
 async def get_users():
   return await UserController.get_users()
 
-@user_router.post("/")
+@router.post("/")
 async def create(user_data: UserData | None):
   return await UserController.create(user_data)
 
-@user_router.post("/auth")
+@router.post("/auth")
 async def login(user_data: UserData | None):
   return await UserController.login(user_data)
 
-@user_router.get("/{id}/logout")
+@router.get("/{id}/logout")
 async def logout(id: str):
   return await UserController.logout(id)
 
-@user_router.post("/{id}")
+@router.post("/{id}")
 async def update(id: str, user_data: UserData | None):
   return await UserController.update(id, user_data)
 
-@user_router.post("/{id}")
+@router.post("/{id}")
 async def delete(id: str, user_data: UserData | None):
   return await UserController.delete(id, user_data)
