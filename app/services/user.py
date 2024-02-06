@@ -1,4 +1,5 @@
 from app.entities.user import User
+from app.services.session import SessionServices
 
 class UserServices:
   async def create(user_data):
@@ -10,6 +11,7 @@ class UserServices:
     return users
   
   async def login():
+    SessionServices.create()
     pass
 
   async def logout():
