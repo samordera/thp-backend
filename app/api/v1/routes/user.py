@@ -1,13 +1,6 @@
 from fastapi import APIRouter
 from app.controllers.user import UserController
-
-###
-# The following code should go in a separate file
-from pydantic import BaseModel
-class UserData(BaseModel):
-  # JSON schema for user data
-  pass
-###
+from app.api.v1.models import UserData
 
 router = APIRouter()
 
