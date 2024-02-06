@@ -1,6 +1,6 @@
 from app.entities.user import User
 
-class UserUsecases:
+class UserServices:
   async def create(user_data):
     user = User(user_data)
     return user
@@ -13,4 +13,10 @@ class UserUsecases:
     pass
 
   async def logout():
+    pass
+
+  async def update():
+    pass
+  
+  async def delete():
     pass

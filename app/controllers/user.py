@@ -1,4 +1,4 @@
-from app.usecases.user import UserUsecases
+from app.services.user import UserServices
 
 class UserController:
   def __init__():
@@ -6,7 +6,7 @@ class UserController:
   
   async def get_users():
     try:
-      users = await UserUsecases.get_users()
+      users = await UserServices.get_users()
       return {
         "success": True,
         "message": "Users retrieved",
@@ -20,7 +20,7 @@ class UserController:
 
   async def create(user_data):
     try:
-      user = await UserUsecases.create(user_data)
+      user = await UserServices.create(user_data)
       print(f'User created - {user}')
       return {
         "success": True,
@@ -34,7 +34,7 @@ class UserController:
     
   async def login(user_data):
     try:
-      await UserUsecases.login(user_data)
+      await UserServices.login(user_data)
       return {
         "success": True,
         "message": "Login successful"
@@ -47,7 +47,7 @@ class UserController:
   
   async def logout(id):
     try:
-      await UserUsecases.logout(id)
+      await UserServices.logout(id)
       return {
         "success": True,
         "message": "Logout successful"

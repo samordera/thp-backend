@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from contextlib import asynccontextmanager
-from app.api.v1.routers import api_router
+from app.api.v1.routes import api_router
 
 @asynccontextmanager
 async def server_init(server: FastAPI):

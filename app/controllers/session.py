@@ -1,37 +1,68 @@
-from app.usecases.session import SessionUsecases
+from app.services.session import SessionServices
 
 class SessionController:
   def __init__():
     pass
   
   async def create():
-    return {
-      "success": True,
-      "message": "New session was created"
-    }
+    try:
+      return {
+        "success": True,
+        "message": "New session was created"
+      }
+    except:
+      return {
+        "success": False,
+        "message": "There was an error creating session"
+      }   
   
   async def active():
-    session_active = SessionUsecases.active()
-    return {
-      "success": True,
-      "session active": session_active,
-    }
+    try:
+      session_active = SessionServices.active()
+      return {
+        "success": True,
+        "session active": session_active,
+        "message": "There is an active session" if session_active else "There is no active session"
+      }
+    except:
+      return {
+        "success": False,
+        "message": "There was an error checking for an active session"
+      }      
   
   async def get_history():
-    return {
-      "success": True,
-      "session history": {}
-    }
+    try:
+      return {
+        "success": True,
+        "session history": {}
+      }
+    except:
+      return {
+        "success": False,
+        "message": "There was an error getting session history"
+      }
   
   async def update_history(id):
-    return {
-      "success": True,
-      "message": "Session history was was updated"
-    }
+    try:
+      return {
+        "success": True,
+        "message": "Session history was was updated"
+      }
+    except:
+      return {
+        "success": False,
+        "message": "There was an error updating session history"
+      }
   
   async def terminate(id):
-    return {
-      "success": True,
-      "message": "Session was terminated"
-    }
+    try:
+      return {
+        "success": True,
+        "message": "Session was terminated"
+      }
+    except:
+      return {
+        "success": False,
+        "message": "There was an error terminating session"
+      }
   
