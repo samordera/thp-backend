@@ -1,4 +1,8 @@
 from pydantic import BaseModel
+
 class UserData(BaseModel):
-  # JSON schema for user data
-  pass
+  firstName: str | None = None
+  lastName: str | None = None
+  email: str | None = None
+  username: str | None = None
+  password: str
