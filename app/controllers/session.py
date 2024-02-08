@@ -1,10 +1,12 @@
 from app.services.session import SessionServices
+from app.controllers import oauth2_scheme
+from fastapi import Depends
 
 class SessionController:
   def __init__():
     pass
   
-  async def create():
+  async def create(access_token: str=Depends(oauth2_scheme)):
     try:
       return {
         "success": True,
@@ -30,7 +32,7 @@ class SessionController:
         "message": "There was an error checking for an active session"
       }      
   
-  async def get_history():
+  async def get_history(session_id: str, access_token: str=Depends(oauth2_scheme)):
     try:
       return {
         "success": True,
@@ -42,7 +44,7 @@ class SessionController:
         "message": "There was an error getting session history"
       }
   
-  async def update_history(id):
+  async def update_history(session_id: str, access_token: str=Depends(oauth2_scheme)):
     try:
       return {
         "success": True,
@@ -54,7 +56,7 @@ class SessionController:
         "message": "There was an error updating session history"
       }
   
-  async def terminate(id):
+  async def terminate(session_id: str, access_token: str=Depends(oauth2_scheme)):
     try:
       return {
         "success": True,

@@ -1,4 +1,7 @@
 from app.services.user import UserServices
+from fastapi import Depends
+from app.controllers import oauth2_scheme
+
 
 class UserController:
   def __init__():
@@ -34,7 +37,7 @@ class UserController:
     
   async def login(user_data):
     try:
-      await UserServices.login(user_data)
+      await UserServices.auth(user_data)
       return {
         "success": True,
         "message": "Login successful"
@@ -45,7 +48,7 @@ class UserController:
         "message": "There was an error while trying to log in"
       }
   
-  async def logout(id):
+  async def logout(id: str, access_token: str=Depends(oauth2_scheme)):
     try:
       await UserServices.logout(id)
       return {
@@ -58,7 +61,7 @@ class UserController:
         "message": "There was an error while trying to log out"
       }
     
-  async def update(id):
+  async def update(id: str, access_token: str=Depends(oauth2_scheme)):
     try:
       return {
         "success": True,
@@ -70,7 +73,7 @@ class UserController:
         "message": "There was an error while trying to update user"
       }
   
-  async def delete(id, user_data):
+  async def delete(id, user_data, access_token: str=Depends(oauth2_scheme)):
     try:
       return {
         "success": True,
